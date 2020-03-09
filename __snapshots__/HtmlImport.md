@@ -19,3 +19,9 @@
 ```html
 <p>Content</p>
 ```
+
+#### `should re-write image URLs`
+
+```html
+<img src="http://localhost/test/image.png"/>
+```
