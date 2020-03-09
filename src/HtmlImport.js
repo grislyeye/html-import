@@ -1,39 +1,27 @@
-import { html, css, LitElement } from 'lit-element';
+import { LitElement } from 'lit-element';
 
 export class HtmlImport extends LitElement {
-  static get styles() {
-    return css`
-      :host {
-        --html-import-text-color: #000;
-
-        display: block;
-        padding: 25px;
-        color: var(--html-import-text-color);
-      }
-    `;
-  }
-
   static get properties() {
     return {
-      title: { type: String },
-      counter: { type: Number },
+      src: { type: String },
     };
   }
 
-  constructor() {
-    super();
-    this.title = 'Hey there';
-    this.counter = 5;
-  }
+  connectedCallback() {
+    super.connectedCallback();
 
-  __increment() {
-    this.counter += 1;
-  }
-
-  render() {
-    return html`
-      <h2>${this.title} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
-    `;
+    window
+      .fetch(this.src, { mode: 'cors' })
+      .then(response => response.text())
+      .then(document => {
+        const parser = new DOMParser();
+        const dom = parser.parseFromString(document, 'text/html');
+        const url = new URL(this.src);
+        const selector = url.hash ? url.hash : 'body';
+        const fragment = dom.querySelector(selector);
+        this.shadowRoot.innerHTML = url.hash ? fragment.outerHTML : fragment.innerHTML;
+        this.dispatchEvent(new CustomEvent('fetched-html'));
+      })
+      .catch(error => console.log(error));
   }
 }

@@ -7,23 +7,9 @@
       background: #fafafa;
     }
   </style>
+  <script type="module" src="../html-import.js"></script>
 </head>
 <body>
-  <div id="demo"></div>
-
-  <script type="module">
-    import { html, render } from 'lit-html';
-    import '../html-import.js';
-
-    const title = 'Hello owc World!';
-    render(
-      html`
-        <html-import .title=${title}>
-          some more light-dom
-        </html-import>
-      `,
-      document.querySelector('#demo')
-    );
-  </script>
+  <html-import src="https://grislyeye.gitlab.io/unique-backgrounds/"></html-import>
 </body>
 </html>

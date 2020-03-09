@@ -1,39 +1,47 @@
-import { html, fixture, expect } from '@open-wc/testing';
+import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { stub } from 'sinon';
 
 import '../html-import.js';
 
+stub(window, 'fetch');
+
+const response = `
+  <html>
+    <body>
+      <h2>Title</h2>
+      <p id="content">Content</p>
+    </body>
+  </html>`;
+
+function mockApiResponse() {
+  return new window.Response(response, {
+    status: 200,
+    headers: { 'Content-type': 'text/html' },
+  });
+}
+
 describe('HtmlImport', () => {
-  it('has a default title "Hey there" and counter 5', async () => {
+  window.fetch.resolves(mockApiResponse());
+
+  it('should import document body', async () => {
     const el = await fixture(html`
-      <html-import></html-import>
+      <html-import src="http://localhost/test"></html-import>
     `);
 
-    expect(el.title).to.equal('Hey there');
-    expect(el.counter).to.equal(5);
+    await oneEvent(el, 'fetched-html');
+
+    expect(el).shadowDom.to.equalSnapshot();
   });
 
-  it('increases the counter on button click', async () => {
-    const el = await fixture(html`
-      <html-import></html-import>
-    `);
-    el.shadowRoot.querySelector('button').click();
+  it('should import document body fragment', async () => {
+    window.fetch.resolves(mockApiResponse());
 
-    expect(el.counter).to.equal(6);
-  });
-
-  it('can override the title via attribute', async () => {
     const el = await fixture(html`
-      <html-import title="attribute title"></html-import>
+      <html-import src="http://localhost/test#content"></html-import>
     `);
 
-    expect(el.title).to.equal('attribute title');
-  });
+    await oneEvent(el, 'fetched-html');
 
-  it('passes the a11y audit', async () => {
-    const el = await fixture(html`
-      <html-import></html-import>
-    `);
-
-    await expect(el).shadowDom.to.be.accessible();
+    expect(el).shadowDom.to.equalSnapshot();
   });
 });

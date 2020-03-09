@@ -1,6 +1,6 @@
 # \<html-import>
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+Dynamically import HTML documents and fragments. This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 ```bash
@@ -13,7 +13,7 @@ npm i html-import
   import 'html-import/html-import.js';
 </script>
 
-<html-import></html-import>
+<html-import src="https://example.org/to-import#fragment"></html-import>
 ```
 
 ## Linting with ESLint, Prettier, and Types
