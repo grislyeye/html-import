@@ -19,17 +19,18 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@open-wc/eslint-config": "^2.0.0",
-    "@open-wc/prettier-config": "^0.1.10",
-    "@open-wc/testing": "^2.0.0",
-    "@open-wc/testing-karma": "^3.0.0",
-    "deepmerge": "^3.2.0",
-    "es-dev-server": "^1.23.0",
-    "eslint": "^6.1.0",
-    "husky": "^1.0.0",
-    "lint-staged": "^8.0.0",
+    "@open-wc/eslint-config": "^2.0.4",
+    "@open-wc/prettier-config": "^0.1.14",
+    "@open-wc/testing": "^2.5.6",
+    "@open-wc/testing-karma": "^3.3.4",
+    "deepmerge": "^4.2.2",
+    "es-dev-server": "^1.43.1",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "lit-html": "^1.1.2",
     "mockserver": "^3.1.1",
-    "sinon": "^9.0.0"
+    "sinon": "^9.0.1"
   },
   "eslintConfig": {
     "extends": [
