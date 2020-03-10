@@ -1,8 +1,8 @@
 {
-  "name": "html-import",
+  "name": "html-import-wc",
   "version": "0.0.0",
-  "description": "Webcomponent html-import following open-wc recommendations",
-  "author": "html-import",
+  "description": "Dynamically import HTML documents and fragments.",
+  "author": "R.G. Wood <ric@grislyeye.com>",
   "license": "MIT",
   "main": "index.js",
   "module": "index.js",

@@ -4,13 +4,13 @@ Dynamically import HTML documents and fragments. This webcomponent follows the [
 
 ## Installation
 ```bash
-npm i html-import
+npm i html-import-wc
 ```
 
 ## Usage
 ```html
 <script type="module">
-  import 'html-import/html-import.js';
+  import 'html-import-wc/html-import.js';
 </script>
 
 <html-import src="https://example.org/to-import#fragment"></html-import>
