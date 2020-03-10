@@ -17,10 +17,7 @@
     "test": "karma start --coverage",
     "test:watch": "karma start --auto-watch=true --single-run=false"
   },
-  "dependencies": {
-    "lit-html": "^1.1.2",
-    "lit-element": "^2.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@open-wc/eslint-config": "^2.0.0",
     "@open-wc/prettier-config": "^0.1.10",

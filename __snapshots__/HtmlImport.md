@@ -1,14 +1,21 @@
 # `HtmlImport`
 
+#### `should return empty element when src not specified`
+
+```html
+```
+
 #### `should import document body`
 
 ```html
 <h2>Title</h2>
-<p id="content">Content</p>
+<div id="content">
+  <p>Content</p>
+</div>
 ```
 
 #### `should import document body fragment`
 
 ```html
-<p id="content">Content</p>
+<p>Content</p>
 ```

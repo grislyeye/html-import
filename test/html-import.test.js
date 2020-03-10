@@ -1,4 +1,4 @@
-import { html, fixture, expect, oneEvent } from '@open-wc/testing';
+import { html, fixture, expect } from '@open-wc/testing';
 import { stub } from 'sinon';
 
 import '../html-import.js';
@@ -9,7 +9,9 @@ const response = `
   <html>
     <body>
       <h2>Title</h2>
-      <p id="content">Content</p>
+      <div id="content">
+        <p>Content</p>
+      </div>
     </body>
   </html>`;
 
@@ -21,16 +23,22 @@ function mockApiResponse() {
 }
 
 describe('HtmlImport', () => {
-  window.fetch.resolves(mockApiResponse());
+  it('should return empty element when src not specified', async () => {
+    window.fetch.resolves(mockApiResponse());
+    const el = await fixture(html`
+      <html-import></html-import>
+    `);
+
+    expect(el).lightDom.to.equalSnapshot();
+  });
 
   it('should import document body', async () => {
+    window.fetch.resolves(mockApiResponse());
     const el = await fixture(html`
       <html-import src="http://localhost/test"></html-import>
     `);
 
-    await oneEvent(el, 'fetched-html');
-
-    expect(el).shadowDom.to.equalSnapshot();
+    expect(el).lightDom.to.equalSnapshot();
   });
 
   it('should import document body fragment', async () => {
@@ -40,8 +48,6 @@ describe('HtmlImport', () => {
       <html-import src="http://localhost/test#content"></html-import>
     `);
 
-    await oneEvent(el, 'fetched-html');
-
-    expect(el).shadowDom.to.equalSnapshot();
+    expect(el).lightDom.to.equalSnapshot();
   });
 });
