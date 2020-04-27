@@ -1,4 +1,4 @@
-# \<html-import> [![Build Status](https://travis-ci.org/grislyeye/html-import.svg?branch=master)](https://travis-ci.org/grislyeye/html-import)
+# \<html-import> [![Build Status](https://travis-ci.org/grislyeye/html-import.svg?branch=master)](https://travis-ci.org/grislyeye/html-import) [![Known Vulnerabilities](https://snyk.io/test/github/grislyeye/html-import/badge.svg?targetFile=package.json)](https://snyk.io/test/github/grislyeye/html-import?targetFile=package.json)
 
 Dynamically import HTML documents and fragments. This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
