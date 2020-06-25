@@ -25,18 +25,14 @@ describe('HtmlImport', () => {
 
   it('should return empty element when src not specified', async () => {
     window.fetch.resolves(mockApiResponse(simpleDocument));
-    const el = await fixture(html`
-      <html-import></html-import>
-    `);
+    const el = await fixture(html`<html-import></html-import>`);
 
     expect(el).lightDom.to.equalSnapshot();
   });
 
   it('should import document body', async () => {
     window.fetch.resolves(mockApiResponse(simpleDocument));
-    const el = await fixture(html`
-      <html-import src="http://localhost/test"></html-import>
-    `);
+    const el = await fixture(html`<html-import src="http://localhost/test"></html-import>`);
 
     expect(el).lightDom.to.equalSnapshot();
   });
@@ -61,9 +57,7 @@ describe('HtmlImport', () => {
   it('should re-write image URLs', async () => {
     window.fetch.resolves(mockApiResponse(documentWithImage));
 
-    const el = await fixture(html`
-      <html-import src="http://localhost/test/"></html-import>
-    `);
+    const el = await fixture(html`<html-import src="http://localhost/test/"></html-import>`);
 
     expect(el).lightDom.to.equalSnapshot();
   });
