@@ -20,6 +20,9 @@ export class HtmlImport extends HTMLElement {
           const selector = url.hash ? url.hash : 'body';
           const fragment = dom.querySelector(selector);
           this.innerHTML = fragment.innerHTML;
+
+          console.log('HtmlImport.ready');
+          this.dispatchEvent(new CustomEvent('wc-ready'));
         });
     }
   }
